@@ -1,0 +1,243 @@
+.page {
+    padding: 48px 0 80px;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.statCard {
+    text-align: center;
+    border-left-width: 3px !important;
+}
+
+.statIcon {
+    font-size: 1.75rem;
+    margin-bottom: 8px;
+}
+
+.statValue {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.statLabel {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.statSub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.twoCol {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.cardTitle {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+/* Horizontal bar chart */
+.chartArea {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hBar {
+    display: grid;
+    grid-template-columns: 160px 1fr 40px;
+    align-items: center;
+    gap: 10px;
+}
+
+.hBarLabel {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hBarTrack {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.hBarFill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.6s ease;
+}
+
+.hBarValue {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: right;
+}
+
+/* Severity */
+.sevGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.sevCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    gap: 4px;
+}
+
+.sevCount {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 800;
+}
+
+.sevLabel {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: lowercase;
+}
+
+/* Model bars */
+.modelBars {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modelBar {
+    display: grid;
+    grid-template-columns: 60px 1fr 40px;
+    align-items: center;
+    gap: 10px;
+}
+
+.modelName {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.mBarTrack {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.mBarFill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.6s ease;
+}
+
+.modelCount {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: right;
+}
+
+/* Daily chart */
+.dailyChart {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 140px;
+    overflow-x: auto;
+    padding-bottom: 24px;
+    position: relative;
+}
+
+.dayCol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    min-width: 40px;
+}
+
+.dayBarWrap {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    height: 100px;
+}
+
+.dayBar {
+    width: 28px;
+    background: var(--gradient-green);
+    border-radius: 4px 4px 0 0;
+    min-height: 4px;
+    transition: height 0.5s ease;
+    position: relative;
+}
+
+.dayBar:hover .dayTip {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dayTip {
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: var(--transition);
+    pointer-events: none;
+}
+
+.dayLabel {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .twoCol {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .statsGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+}

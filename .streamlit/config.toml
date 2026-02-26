@@ -1,0 +1,27 @@
+# Streamlit Server Configuration
+# Applied to ALL users — do NOT put secrets here
+
+[server]
+# Raise limits for multi-user production use
+maxUploadSize = 20           # MB per file upload
+maxMessageSize = 50          # MB per websocket message
+enableCORS = false
+enableXsrfProtection = true
+headless = true              # Required when running on a server (no browser auto-open)
+
+[browser]
+gatherUsageStats = false     # Don't send anonymous usage data
+
+[theme]
+primaryColor       = "#2ecc71"
+backgroundColor    = "#f0fdf4"
+secondaryBackgroundColor = "#dcfce7"
+textColor          = "#1b4332"
+font               = "sans serif"
+
+[runner]
+# Avoids unnecessary full reruns on minor state changes
+fastReruns = true
+
+[logger]
+level = "warning"            # Suppress Streamlit's own verbose logs

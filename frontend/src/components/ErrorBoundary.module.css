@@ -1,0 +1,28 @@
+.errorContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 24px;
+    background: var(--bg-primary);
+}
+
+.errorCard {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    max-width: 500px;
+    text-align: center;
+}
+
+.errorCard h2 {
+    color: var(--accent-red);
+    margin-bottom: 16px;
+    font-size: 1.5rem;
+}
+
+.errorCard p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
