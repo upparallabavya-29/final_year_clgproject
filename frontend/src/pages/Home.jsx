@@ -97,8 +97,8 @@ export default function Home({ navigate }) {
 
                     {/* Stats */}
                     <div className={styles.stats}>
-                        {stats.map(s => (
-                            <div key={s.label} className={styles.stat}>
+                        {stats.map((s, i) => (
+                            <div key={s.label} className={`${styles.stat} animate-fade-in-up`} style={{ animationDelay: `${0.6 + i * 0.1}s` }}>
                                 <span className={styles.statIcon}>{s.icon}</span>
                                 <span className={styles.statValue}>{s.value}</span>
                                 <span className={styles.statLabel}>{s.label}</span>
@@ -114,8 +114,8 @@ export default function Home({ navigate }) {
                     <h2 className="section-title" style={{ textAlign: 'center' }}>Supported Crops</h2>
                     <p className="section-subtitle" style={{ textAlign: 'center' }}>14 crop species supported on the PlantVillage dataset</p>
                     <div className={styles.cropGrid}>
-                        {crops.length > 0 ? crops.map(c => (
-                            <div key={c.name} className={styles.cropCard}>
+                        {crops.length > 0 ? crops.map((c, i) => (
+                            <div key={c.name} className={`${styles.cropCard} animate-zoom-in`} style={{ animationDelay: `${i * 0.05}s` }}>
                                 <span className={styles.cropEmoji}>{c.emoji}</span>
                                 <span className={styles.cropName}>{c.name}</span>
                             </div>
@@ -134,8 +134,8 @@ export default function Home({ navigate }) {
                         Production-grade plant pathology — powered by state-of-the-art transformer models.
                     </p>
                     <div className={styles.featureGrid}>
-                        {FEATURES.map(f => (
-                            <div key={f.title} className="card animate-fade-in-up">
+                        {FEATURES.map((f, i) => (
+                            <div key={f.title} className="card animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
                                 <div className={styles.featureIcon}>{f.icon}</div>
                                 <h3 className={styles.featureTitle}>{f.title}</h3>
                                 <p className={styles.featureDesc}>{f.desc}</p>
