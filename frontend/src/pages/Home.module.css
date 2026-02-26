@@ -184,7 +184,23 @@
 }
 
 .cropEmoji {
-    font-size: 2rem;
+    display: none;
+    /* fallback removed */
+}
+
+.cropImg {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 4px;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+}
+
+.cropCard:hover .cropImg {
+    border-color: rgba(99, 210, 134, 0.5);
+    transform: scale(1.05);
 }
 
 .cropName {

@@ -56,11 +56,30 @@ export default function Home({ navigate }) {
             }
         }).catch(console.error);
 
+        const cropImages = {
+            'Apple': 'https://images.unsplash.com/photo-1560806887-1e4cd0b6caa6?w=200&h=200&fit=crop',
+            'Blueberry': 'https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=200&h=200&fit=crop',
+            'Cherry': 'https://images.unsplash.com/photo-1528821128474-27f963b062bf?w=200&h=200&fit=crop',
+            'Corn (Maize)': 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=200&h=200&fit=crop',
+            'Grape': 'https://images.unsplash.com/photo-1596369526145-81206c279c6d?w=200&h=200&fit=crop',
+            'Orange': 'https://images.unsplash.com/photo-1547514701-42782101795e?w=200&h=200&fit=crop',
+            'Peach': 'https://images.unsplash.com/photo-1595163539873-1f1969a532d8?w=200&h=200&fit=crop',
+            'Bell Pepper': 'https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?w=200&h=200&fit=crop',
+            'Potato': 'https://images.unsplash.com/photo-1518977676601-b552317beff2?w=200&h=200&fit=crop',
+            'Raspberry': 'https://images.unsplash.com/photo-1577069861033-55d04cec4f18?w=200&h=200&fit=crop',
+            'Soybean': 'https://images.unsplash.com/photo-1582239423984-babbcb06cb23?w=200&h=200&fit=crop',
+            'Squash': 'https://images.unsplash.com/photo-1570586437263-ab629fccc818?w=200&h=200&fit=crop',
+            'Strawberry': 'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=200&h=200&fit=crop',
+            'Tomato': 'https://images.unsplash.com/photo-1518977822557-013b5e4c0ba6?w=200&h=200&fit=crop',
+        };
+
+        const getImageUrl = (name) => cropImages[name] || 'https://images.unsplash.com/photo-1581881067986-2a6230f73fdd?w=200&h=200&fit=crop';
+
         authFetch('/api/crops').then(res => res.json()).then(data => {
             if (data && Array.isArray(data.crops)) {
-                setCrops(data.crops.map(c => ({ name: c, emoji: '🪴' })));
+                setCrops(data.crops.map(c => ({ name: c, image: getImageUrl(c) })));
             } else if (Array.isArray(data)) {
-                setCrops(data.map(c => ({ name: c.name || c, emoji: '🪴' })));
+                setCrops(data.map(c => ({ name: c.name || c, image: getImageUrl(c.name || c) })));
             }
         }).catch(console.error);
     }, []);
@@ -118,7 +137,7 @@ export default function Home({ navigate }) {
                     <div className={styles.cropGrid}>
                         {crops.length > 0 ? crops.map((c, i) => (
                             <div key={c.name} className={`${styles.cropCard} animate-zoom-in`} style={{ animationDelay: `${i * 0.05}s` }}>
-                                <span className={styles.cropEmoji}>{c.emoji}</span>
+                                <img src={c.image} alt={c.name} className={styles.cropImg} loading="lazy" />
                                 <span className={styles.cropName}>{c.name}</span>
                             </div>
                         )) : (
