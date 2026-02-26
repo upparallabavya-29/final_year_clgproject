@@ -57,8 +57,10 @@ export default function Home({ navigate }) {
         }).catch(console.error);
 
         authFetch('/api/crops').then(res => res.json()).then(data => {
-            if (Array.isArray(data)) {
-                setCrops(data.map(c => ({ name: c.name, emoji: '🪴' })));
+            if (data && Array.isArray(data.crops)) {
+                setCrops(data.crops.map(c => ({ name: c, emoji: '🪴' })));
+            } else if (Array.isArray(data)) {
+                setCrops(data.map(c => ({ name: c.name || c, emoji: '🪴' })));
             }
         }).catch(console.error);
     }, []);
